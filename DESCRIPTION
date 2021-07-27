@@ -1,0 +1,10 @@
+Package: charlson
+Type: Package
+Title: Charlson
+Version: 0.1.0
+Author: James Hedley
+Maintainer: James Hedley <james.hedley@gmail.com>
+Description: Calculate the Charlson Comorbidity Index (CCI) based on ICD-10 diagnosis codes. Also includes a function to create a binary flag variable (0 or 1) for whether any speicfied ICD codes are present
+License: None
+Encoding: UTF-8
+LazyData: true
