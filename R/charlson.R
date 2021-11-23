@@ -10,6 +10,8 @@
 # Create an example dataset of diagnosis codes
 library('tidyr')
 library('dplyr')
+
+install.packages('comorbidity')
 library('comorbidity')
 
 
