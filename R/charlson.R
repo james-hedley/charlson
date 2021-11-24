@@ -7,33 +7,6 @@
 # Last updated: 22nd July 2021
 
 
-# Create an example dataset of diagnosis codes
-library('tidyr')
-library('dplyr')
-
-install.packages('comorbidity')
-library('comorbidity')
-
-
-set.seed(12345)
-example_icdcodes_data <- data.frame(id=rep(seq(1:200),5)) %>%
-  as_tibble() %>%
-  arrange(id) %>%
-  group_by(id) %>%
-  mutate(episode=seq_len(n())) %>%
-  ungroup() %>%
-  slice(rep(1:n(),each=51)) %>%
-  group_by(id,episode) %>%
-  mutate(diagnosis_code_seq=seq(0:50)-1) %>%
-  ungroup() %>%
-  arrange(id,episode,diagnosis_code_seq) %>%
-  mutate(diagnosis_code=comorbidity::sample_diag(n())) %>%
-  pivot_wider(names_from=diagnosis_code_seq,
-              names_prefix='diagnosis_code',
-              values_from=diagnosis_code) %>%
-  rename(diagnosis_codeP=diagnosis_code0)
-
-
 # Define a function that creates a flag variable based on the ICD codes specified ----
 icdcode_flag <- function(data=data,
                          newvar=flag,
